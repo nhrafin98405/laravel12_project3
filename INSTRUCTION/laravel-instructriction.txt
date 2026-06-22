@@ -1,0 +1,179 @@
+# laravel-70
+
+NH Rafin
+
+
+REQ
+
+1.XAMPP
+2.COMPOSER
+3.Laravel Breeze(autho)
+4.
+
+STEPS
+
+1.comopser download & install
+
+
+2.xampp er ini file e (;) erais korte hobe(extension=intl,extension=openssl,extension=zip)
+
+
+3.composer create-project laravel/laravel laravel12_project1
+
+
+4.cd laravel12_ (project er name)
+
+
+5.php artisan serve
+
+
+6.name.blade.php
+
+
+7.php artisan(all comand)
+
+
+8.cls (screen clear)
+
+
+9. .env(DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel12_project1
+DB_USERNAME=root
+DB_PASSWORD=)
+
+
+10.db create =( php artisan migrate )
+
+11.db replace =( php artisan migrate:refresh )
+
+12.make:controller =(php artisan make:controller FrontendController)
+
+13.extantions = Laravel Snippets,Laravel Blade Snippets,Laravel Extra Intellisense,Laravel Blade formatter
+
+
+project steps
+
+
+1.template namano
+
+2.view e fontent,backend 2 ta folder banao
+
+3.backend e file khule ck koro
+
+4.blad templating == perent class ke child class e extend kora = ( @extends('backend.master') )
+
+5.stack/push ki kore
+
+6.php artisan route:list
+
+7.{{}} = echo
+
+8.path bosanor system = href="{{url('/students')}}"
+
+
+migration
+
+
+1.blade file creats
+
+2.php artisan make:migration create_students_table
+
+3.table structure nijer banate hobe  = {      
+	    		$table->id();
+            		$table->string('name' , 100);
+           		$table->enum('gender',['male','female']);
+            		$table->string('phone',20);
+            		$table->string('email',50)->unique();
+            		$table->tinyInteger('district');
+            		$table->string('subject',100);
+            		$table->timestamps(); 
+		}
+
+
+4.edit kore abar database add korte = ( php artisan migrate:refresh )
+
+4.1.(    Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('name' , 100);
+            $table->enum('gender',['male','female','others']);
+            $table->string('phone',20)->nullable();
+            $table->string('email',50)->unique();
+            $table->tinyInteger('district');
+            $table->string('subject',100)->nullable();
+            $table->timestamps();
+        });
+
+)
+
+5.php artisan make:model Student
+
+5.1.jodi table name vinno thake tyle amon hobe =[
+
+class Student extends Model
+{
+    protected $fillable =['nmae','gender','email','district'];
+    protected $table ="table name";
+}
+
+
+]
+6.controller banate hobe resource soho ( php artisan make:controller StudentController -r )
+
+
+data pathano ( first e from thik korte hobe database er fild onujai )
+
+1.web page e { Route::get('students',[StudentController::class,'index'])->name('student.index');
+}
+
+2. left bar e emon vabe bosbe [         {{-- <a class="nav-link" href="{{url('/students')}}"> --}}
+        <a class="nav-link" href="{{route('student.index')}}"> ]
+
+3. @csrf { form er vitor use korte hobe noile submit hobe na }
+
+4. public function store(Request $request)  Request = Laravel er object
+					    $request =form er sob data dharon kortece
+
+5.dd { Laravel er testing function }
+
+district er crud operation ta koro
+
+
+USER AUTHOENATION
+
+1.{
+
+	For Specific project 
+ composer config policy.advisories.block false
+
+For global
+
+
+composer config --global audit.block-insecure false
+
+}
+
+2.breez install korar age command { composer require laravel/breeze --dev }
+
+3.php artisan breeze:install
+
+4.blade
+
+5. 1
+
+
+SHORT COMMAND
+
+1. MCR = { php artisan make:model product -mcr }
+
+2.migration kora
+
+3.model : $fillable
+
+4.route kora
+
+5.view er kaj kora
+
+6.controller ready kora
+
