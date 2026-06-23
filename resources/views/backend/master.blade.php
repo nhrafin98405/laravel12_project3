@@ -14,10 +14,10 @@
 	  <script src="{{asset('')}}assets/js/pace.min.js"></script>
     <!--Styles-->
     <link href="{{asset('')}}assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('')}}assets/css/icons.css" >
 
-    <link https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="{{asset('')}}assets/css/main.css" rel="stylesheet">
     <link href="{{asset('')}}assets/css/dark-theme.css" rel="stylesheet">
     <link href="{{asset('')}}assets/css/semi-dark-theme.css" rel="stylesheet">
