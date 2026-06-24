@@ -5,6 +5,8 @@
 
 
      <main class="page-content">
+
+
         <!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 					<div class="breadcrumb-title pe-3">Tables</div>
@@ -33,6 +35,12 @@
 				<!--end breadcrumb-->
 
         <h6 class="mb-0 text-uppercase">DataTable Example</h6>
+
+					@if(session('success'))
+				<div class="alert alert-success">
+					{{ session('success') }}
+				</div>
+			@endif
 				<hr>
 				<div class="card">
 					<div class="card-body">

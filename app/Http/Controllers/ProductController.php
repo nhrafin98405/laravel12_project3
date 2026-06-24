@@ -30,7 +30,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $request->validate([
+            'name'=>'required|max:50|min:4',
+            'description'=>'max:250|min:10',
+            'category'=>'required',
+            'price'=>'required',
+            'status'=>'required',
+            
+        ]);
+
+        $filename = time().'.'.$request->photo->extension();
+
+        // dd($filename);
+
+        $request->photo->move(public_path('images'),$filename);
+
+        $product = new product;
+       $product->name = $request->name;
+       $product->category = $request->category;
+       $product->description = $request->description;
+       $product->price = $request->price;
+       $product->status = $request->status;
+       $product->image = 'images/'.$filename;
+
+    //    dd($subjects);
+
+       $product->save();
+
+       return redirect('/admin/product')->with('success', 'Successfully product Created');
+
+    
     }
 
     /**

@@ -3,6 +3,8 @@
 use App\http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\ProductController;
+use App\http\Controllers\CategoryController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +25,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
     
     Route::resource('product',ProductController::class);
+    Route::resource('category',CategoryController::class);
 
 
 
