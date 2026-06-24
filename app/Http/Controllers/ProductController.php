@@ -12,7 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('backend.product.index');
+
+    $products = product::all();
+        return view('backend.product.index',['items'=>$products]);
 
         // echo "hellow";
     }
