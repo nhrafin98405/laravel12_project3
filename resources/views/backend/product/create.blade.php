@@ -94,10 +94,18 @@
                             <div class="col-12">
                               <label for="AddCategory" class="form-label fw-bold">Category</label>
                               <select class="form-select" name="category" id="AddCategory">
-                                <option value="0">Topwear</option>
-                                <option value="1">Bottomwear</option>
-                                <option value="2">Casual Tshirt</option>
-                                <option value="3">Electronic</option>
+                                 <option value="">Select One</option>
+                                 @foreach ($items as $category )
+
+                                    
+
+                                    <option value="{{$category->id}}">{{$category->cat_name}}</option>
+
+                                    
+                                    
+                                 @endforeach
+
+                               
                               </select>
                             </div>
                         

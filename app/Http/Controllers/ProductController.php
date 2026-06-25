@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product.create');
+        $cats = Category::all();
+        return view('backend.product.create',['items'=>$cats]);
+        
+        
+
     }
 
     /**
@@ -32,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+    
 
         $request->validate([
             'name'=>'required|max:50|min:4',
@@ -50,16 +55,14 @@ class ProductController extends Controller
         $request->photo->move(public_path('images'),$filename);
 
         $product = new product;
-       $product->name = $request->name;
-       $product->category = $request->category;
-       $product->description = $request->description;
-       $product->price = $request->price;
-       $product->status = $request->status;
-       $product->image = 'images/'.$filename;
+        $product->name = $request->name;
+        $product->category_id = $request->category;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->status = $request->status;
+        $product->image = 'images/'.$filename;
 
-    //    dd($subjects);
-
-       $product->save();
+        $product->save();
 
        return redirect('/admin/product')->with('success', 'Successfully product Created');
 
